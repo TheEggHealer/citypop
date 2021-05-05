@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import {LinearGradient} from 'expo-linear-gradient';
-import Logo from '../assets/logo.svg'
+import Logo from '../assets/svgs/logo.svg'
 
 export default function Header() {
   return (
@@ -18,8 +18,8 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '25%',
     padding: 0,
-    borderBottomLeftRadius: 30,
-    borderBottomRightRadius: 30,
+    borderBottomLeftRadius: 40,
+    borderBottomRightRadius: 40,
     overflow: 'hidden',
   },
   gradient: {
