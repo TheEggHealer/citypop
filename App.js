@@ -1,9 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import HomeScreen from './pages/HomeScreen';
+import HomeScreen from './screens/HomeScreen';
 import * as Font from 'expo-font';
 import { useState } from 'react';
 import AppLoading from 'expo-app-loading';
+import { AppNavigator } from './AppNavigator';
 
 const getFonts = () => Font.loadAsync({
   'red-hat': require('./assets/fonts/RedHatDisplay-Regular.ttf'),
@@ -15,7 +16,7 @@ export default function App() {
 
   if (fontsLoaded) {
     return (
-      <HomeScreen />
+      <AppNavigator />
     );
   } else {
     return (
