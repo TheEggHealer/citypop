@@ -1,10 +1,12 @@
 import React from 'react'
 import { View, StyleSheet, Text } from 'react-native'
+import Header from '../components/Header';
+import { globalStyles } from '../styles/GlobalStyles';
 
-export default function CitySearchScreen() {
+export default function CitySearchScreen({ navigation }) {
   return (
-    <View>
-      <Text>City search screen</Text>
+    <View style={globalStyles.container}>
+      <Header backButtonHandler={ () => navigation.goBack()}/>
     </View>
   )
 }

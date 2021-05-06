@@ -13,7 +13,7 @@ export default function HomeScreen({ navigation }) {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={globalStyles.container}>
       <Header />
       <View style={globalStyles.content}>
 
@@ -44,10 +44,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     
-  },
-  container: {
-    flex: 1,
-    backgroundColor: '#fcfcfc',
   },
   icon: {
     marginRight: 5,

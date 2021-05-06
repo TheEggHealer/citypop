@@ -1,12 +1,20 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import { Button, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } from 'react-native'
 import {LinearGradient} from 'expo-linear-gradient';
-import Logo from '../assets/svgs/logo.svg'
+import Logo from '../assets/svgs/logo.svg';
+import BackIcon from '../assets/svgs/back.svg';
 
-export default function Header() {
+export default function Header({ backButtonHandler }) {
   return (
     <View style={styles.header}>
       <LinearGradient style={styles.gradient} colors={['#85D1B6', '#41A581']}>
+        {/* If backButtonHandle is defined, show a back button */}
+        {typeof backButtonHandler === 'function' ?
+          <TouchableOpacity onPress={backButtonHandler} style={styles.bb}>
+            <BackIcon width={30} height={30} />
+          </TouchableOpacity>
+          : null}
+        
         <Logo style={styles.logo}/>
       </LinearGradient>
     </View>
@@ -32,5 +40,12 @@ const styles = StyleSheet.create({
     bottom: 30,
     overflow: 'hidden',
     borderBottomLeftRadius: 20,
+  },
+  bb: {
+    position: 'absolute',
+    bottom: 55,
+    left: 30,
+    fontSize: 14,
+    color: '#fff',
   }
 })
