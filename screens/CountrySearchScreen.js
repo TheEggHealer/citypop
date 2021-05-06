@@ -19,7 +19,7 @@ export default function CountrySearchScreen({navigation}) {
     setError();
     console.log('Searching for country: ' + searchInput);
 
-    fetch(`http://api.geonames.org/searchJSON?q=${searchInput}&username=weknowit&style=LONG&orderby=population&cities=cities15000`)
+    fetch(`http://api.geonames.org/searchJSON?q=${searchInput}&featureClass=P&username=weknowit&style=LONG&orderby=population&cities=cities15000`)
       .then(response => {
         return response.json();
       })

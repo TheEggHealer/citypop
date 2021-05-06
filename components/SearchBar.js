@@ -8,7 +8,7 @@ export default function SearchBar({ hint, loading, searchButtonHandler, onChange
       <TextInput placeholder={hint} style={styles.textInput} onChangeText={onChangeText} />
       {
         loading
-        ? <ActivityIndicator style={styles.loading} />
+        ? <ActivityIndicator style={styles.loading} color="#9B9B9B"/>
         : <TouchableOpacity onPress={searchButtonHandler}>
             <SearchIcon width={30} height={30} />
           </TouchableOpacity>

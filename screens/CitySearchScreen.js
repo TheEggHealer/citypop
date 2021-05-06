@@ -18,7 +18,7 @@ export default function CitySearchScreen({ navigation }) {
     setError();
     console.log('Searching for city: ' + searchInput);
 
-    fetch(`http://api.geonames.org/searchJSON?q=${searchInput}&style=LONG&maxRows=1&username=weknowit`)
+    fetch(`http://api.geonames.org/searchJSON?q=${searchInput}&featureClass=P&style=LONG&maxRows=1&username=weknowit`)
       .then(response => {
         // Parse html response to a JSON object
         return response.json();
