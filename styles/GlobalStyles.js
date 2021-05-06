@@ -14,5 +14,10 @@ export const globalStyles = StyleSheet.create({
     fontFamily: 'red-hat-bold',
     fontSize: 24,
     color: 'black',
-  }
+  },
+  hintText: {
+    fontFamily: 'red-hat',
+    fontSize: 14,
+    color: '#747474',
+  },
 });
