@@ -13,6 +13,22 @@ export default function CitySearchScreen({ navigation }) {
   const [error, setError] = useState();
   const [cityData, setCityData] = useState();
 
+  // Gets the name, population and country from the query results
+  const extractDataFromQuery = (json) => {
+    const cityData = json['geonames'][0];
+
+    if (cityData == null) {
+      setError(`Could not find a city called ${searchInput}.`);
+    } else {
+      setCityData({
+        name: cityData.name,
+        population: addCommas(cityData.population),
+        cityLocation: cityData.countryName,
+      });
+    }
+  }
+
+  // Fetch json data from GeoNames api when the user press the search button
   const searchButtonHandler = () => {
     setLoading(true);
     setError();
@@ -20,22 +36,10 @@ export default function CitySearchScreen({ navigation }) {
 
     fetch(`http://api.geonames.org/searchJSON?q=${searchInput}&featureClass=P&style=LONG&maxRows=1&username=weknowit`)
       .then(response => {
-        // Parse html response to a JSON object
         return response.json();
       })
       .then(json => {
-        const cityData = json['geonames'][0];
-
-        if (cityData == null) {
-          setError(`Could not find a city called ${searchInput}.`);
-        } else {
-          setCityData({
-            name: cityData.name,
-            population: addCommas(cityData.population),
-            cityLocation: cityData.countryName,
-          });
-        }
-
+        extractDataFromQuery(json);
         setLoading(false);
       })
       .catch(e => {
@@ -51,6 +55,8 @@ export default function CitySearchScreen({ navigation }) {
       <View style={globalStyles.content}>
         <Text style={globalStyles.headerText}>City search</Text>
         <SearchBar hint='Enter a city' loading={loading} onChangeText={text => searchInput = text} searchButtonHandler={searchButtonHandler} />
+
+        {/* If there is data in cityData and there is no error, show the city's population */}
         {cityData && !error ? 
           <View style={styles.city}>
             <Text style={styles.cityName}>{cityData.name}, {cityData.cityLocation}</Text>
@@ -59,6 +65,8 @@ export default function CitySearchScreen({ navigation }) {
           </View>
           : null
         }
+
+        {/* If there is an error, show it */}
         {error ? 
           <View style={styles.city}>
             <Text style={globalStyles.errorText}>{error}</Text>

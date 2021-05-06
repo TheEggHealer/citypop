@@ -8,7 +8,8 @@ export default function Header({ backButtonHandler }) {
   return (
     <View style={styles.header}>
       <LinearGradient style={styles.gradient} colors={['#85D1B6', '#41A581']}>
-        {/* If backButtonHandle is defined, show a back button */}
+
+        {/* If backButtonHandler is defined, show a back button */}
         {typeof backButtonHandler === 'function' ?
           <TouchableOpacity onPress={backButtonHandler} style={styles.bb}>
             <BackIcon width={30} height={30} />
@@ -26,8 +27,8 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '25%',
     padding: 0,
-    borderBottomLeftRadius: 40,
-    borderBottomRightRadius: 40,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
     overflow: 'hidden',
   },
   gradient: {

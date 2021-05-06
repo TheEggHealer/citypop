@@ -2,6 +2,7 @@ import React from 'react';
 import { ActivityIndicator, StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
 import SearchIcon from '../assets/svgs/search.svg';
 
+// A search bar with a button that changes to a loading indicator when loading is true
 export default function SearchBar({ hint, loading, searchButtonHandler, onChangeText }) {
   return (
     <View style={styles.searchRow}>

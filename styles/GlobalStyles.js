@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 
+// Styles that are shared and used by multiple screens
 export const globalStyles = StyleSheet.create({
   container: {
     flex: 1,

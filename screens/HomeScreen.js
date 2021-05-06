@@ -9,10 +9,6 @@ import CityHero from '../assets/svgs/city.svg';
 
 export default function HomeScreen({ navigation }) {
 
-  const citySearchPressHandler = () => {
-    navigation.navigate('CitySearch');
-  }
-
   return (
     <View style={globalStyles.container}>
       <Header />
@@ -21,7 +17,7 @@ export default function HomeScreen({ navigation }) {
         {/* Search Header */}
         <View style={styles.searchHeader}>
           <SearchIcon style={ styles.icon }width={25} height={25} />
-          <Text style={globalStyles.headerText} onPress={() => citySearchPressHandler()}>Search</Text>
+          <Text style={globalStyles.headerText}>Search</Text>
         </View>
 
         {/* Search Buttons */}

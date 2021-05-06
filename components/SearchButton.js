@@ -1,6 +1,8 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 
+
+// A green button with dropshadow used on the HomeScreen
 export default function SearchButton({ title, onPress }) {
   return (
     <TouchableHighlight onPress={onPress} style={styles.button} underlayColor='#6DCAA8'>

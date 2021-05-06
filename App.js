@@ -14,6 +14,7 @@ const getFonts = () => Font.loadAsync({
 export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
 
+  // When fonts are loaded, show the app.
   if (fontsLoaded) {
     return (
       <AppNavigator />

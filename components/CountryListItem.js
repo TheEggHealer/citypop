@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { globalStyles } from '../styles/GlobalStyles'
 
+// A card with information about a city
 export default function CountryListItem( { city } ) {
   return (
     <View style={styles.card}>

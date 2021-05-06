@@ -14,6 +14,24 @@ export default function CountrySearchScreen({navigation}) {
   const [error, setError] = useState();
   const [countryData, setCountryData] = useState();
 
+  // Creates an array of objects containing information about each city that was returned by the query
+  const extractDataFromQuery = json => {
+    const countryData = json['geonames'];
+
+    if (countryData.length === 0) {
+      setError(`Could not find a country called ${searchInput}.`);
+    } else {
+      setCountryData(countryData.map((city, index) => {
+        return {
+          key: index,
+          name: city.name,
+          population: addCommas(city.population),
+        }
+      }));
+    }
+  }
+
+  // Fetch json data from GeoNames api when the user press the search button
   const searchButtonHandler = () => {
     setLoading(true);
     setError();
@@ -24,21 +42,7 @@ export default function CountrySearchScreen({navigation}) {
         return response.json();
       })
       .then(json => {
-        const countryData = json['geonames'];
-
-        if (countryData.length === 0) {
-          setError(`Could not find a country called ${searchInput}.`);
-          console.log('Couldnt load');
-        } else {
-          setCountryData(countryData.map((city, index) => {
-            return {
-              key: index,
-              name: city.name,
-              population: addCommas(city.population),
-            }
-          }));
-        }
-
+        extractDataFromQuery(json);
         setLoading(false);
       })
       .catch(e => {
@@ -58,7 +62,8 @@ export default function CountrySearchScreen({navigation}) {
             <SearchBar hint='Enter a country' loading={loading} onChangeText={text => searchInput = text} searchButtonHandler={searchButtonHandler} />
           </View>
 
-          {countryData && !error ?
+        {/* If there is data in countryData and there is no error, show a list of all the cities */}
+        {countryData && !error ?
             <View>
               {countryData.map(city => {
                 return (
@@ -68,6 +73,8 @@ export default function CountrySearchScreen({navigation}) {
             </View>
             : null
           }
+
+          {/* If there is an error, show it */}
           {error ?
             <Text style={globalStyles.errorText}>{error}</Text>
             : null

@@ -1,3 +1,4 @@
+// Inserts commas to make a number easier to read
 export function addCommas(num) {
   num += '';
   var x = num.split('.');
