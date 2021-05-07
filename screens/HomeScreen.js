@@ -17,7 +17,7 @@ export default function HomeScreen({ navigation }) {
         {/* Search Header */}
         <View style={styles.searchHeader}>
           <SearchIcon style={ styles.icon }width={25} height={25} />
-          <Text style={globalStyles.headerText}>Search</Text>
+          <Text style={globalStyles.headerText}>Search for population</Text>
         </View>
 
         {/* Search Buttons */}

@@ -29,7 +29,12 @@ const styles = StyleSheet.create({
     padding: 0,
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 0,
-    overflow: 'hidden',
+
+    elevation: 10,
+    shadowOffset:{  width: 0,  height: 4, },
+    shadowColor: 'black',
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
   },
   gradient: {
     width: '100%',
